@@ -24,6 +24,7 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+<<<<<<< HEAD
 on boot
     #Accelerometer-BMA254
     chown system input /sys/class/input/input3/data
@@ -141,3 +142,71 @@ on boot
 
     # efs
     restorecon -R /efs
+=======
+on post-fs-data
+    # Permissions for svc led
+    chown system system /sys/class/sec/led/led_r
+    chown system system /sys/class/sec/led/led_g
+    chown system system /sys/class/sec/led/led_b
+    chown system system /sys/class/sec/led/led_pattern
+    chown system system /sys/class/sec/led/led_blink
+    chown system system /sys/class/sec/led/led_lowpower
+
+on boot
+    # NFC local data and nfcee xml storage
+    mkdir /data/nfc 0770 nfc nfc
+    mkdir /data/nfc/param 0770 nfc nfc
+
+    # NFC_NXP
+    setprop ro.nfc.port "I2C"
+    chmod 0660 /dev/pn547
+    chown nfc nfc /dev/pn547
+    symlink /dev/pn547 /dev/pn544
+
+    # OTG Test
+    chown system radio /sys/class/host_notify/usb_otg/booster
+    chmod 0660 /sys/class/host_notify/usb_otg/booster
+
+    # Accelerometer_sensor
+    chown system radio /sys/class/sensors/accelerometer_sensor/raw_data
+    chown system radio /sys/class/sensors/accelerometer_sensor/calibration
+    chown system radio /sys/class/sensors/accelerometer_sensor/reactive_alert
+    chown system radio /sys/class/sensors/accelerometer_sensor/vendor
+    chown system radio /sys/class/sensors/accelerometer_sensor/name
+
+    # Gyro_sensor
+    chown system radio /sys/class/sensors/gyro_sensor/power_on
+    chown system radio /sys/class/sensors/gyro_sensor/temperature
+    chown system radio /sys/class/sensors/gyro_sensor/selftest
+    chown system radio /sys/class/sensors/gyro_sensor/vendor
+    chown system radio /sys/class/sensors/gyro_sensor/name
+
+    # Light_sensor
+    chown system radio /sys/class/sensors/light_sensor/lux
+    chown system radio /sys/class/sensors/light_sensor/raw_data
+    chown system radio /sys/class/sensors/light_sensor/vendor
+    chown system radio /sys/class/sensors/light_sensor/name
+
+    # Magnetic_sensor
+    chown system radio /sys/class/sensors/magnetic_sensor/selftest
+    chown system radio /sys/class/sensors/magnetic_sensor/raw_data
+    chown system radio /sys/class/sensors/magnetic_sensor/vendor
+    chown system radio /sys/class/sensors/magnetic_sensor/name
+
+    # Proximity_sensor
+    chown system radio /sys/class/sensors/proximity_sensor/state
+    chown system radio /sys/class/sensors/proximity_sensor/prox_avg
+    chown system radio /sys/class/sensors/proximity_sensor/prox_cal
+    chown system radio /sys/class/sensors/proximity_sensor/prox_tresh
+    chown system radio /sys/class/sensors/proximity_sensor/vendor
+    chown system radio /sys/class/sensors/proximity_sensor/name
+
+    # Sensors
+    chown system system /efs/FactoryApp/baro_delta
+    chmod 0640 /efs/FactoryApp/baro_delta
+    restorecon /efs/FactoryApp/baro_delta
+
+    chown system system /efs/gyro_cal_data
+    chmod 0640 /efs/gyro_cal_data
+    restorecon /efs/gyro_cal_data
+>>>>>>> cms/cm-13.0

@@ -23,6 +23,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml \
     $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
     $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml
+<<<<<<< HEAD
 
 # Doze
 PRODUCT_PACKAGES += \
@@ -31,18 +32,39 @@ PRODUCT_PACKAGES += \
 #GPS
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/gps.conf:system/etc/gps.conf
+=======
+
+# Doze
+PRODUCT_PACKAGES += \
+    SamsungDoze
+
+# Lights
+PRODUCT_PACKAGES += \
+    lights.msm8226
 
 # Media
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
+>>>>>>> cms/cm-13.0
+
+# Media
+PRODUCT_COPY_FILES += \
+<<<<<<< HEAD
+    $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
+=======
+    frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml
+>>>>>>> cms/cm-13.0
 
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
     init.target.rc
+<<<<<<< HEAD
 
 PRODUCT_PACKAGES += \
     lights.msm8226
+=======
+>>>>>>> cms/cm-13.0
 
 # Thermal
 PRODUCT_COPY_FILES += \

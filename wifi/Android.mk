@@ -45,6 +45,7 @@ LOCAL_SRC_FILES    := $(LOCAL_MODULE)
 LOCAL_MODULE_PATH  := $(TARGET_OUT_ETC)/wifi
 include $(BUILD_PREBUILT)
 
+<<<<<<< HEAD
 include $(CLEAR_VARS)
 LOCAL_MODULE       := bcmdhd_ibss.bin
 LOCAL_MODULE_TAGS  := optional
@@ -117,4 +118,6 @@ LOCAL_SRC_FILES    := $(LOCAL_MODULE)
 LOCAL_MODULE_PATH  := $(TARGET_OUT_ETC)/wifi
 include $(BUILD_PREBUILT)
 
+=======
+>>>>>>> cms/cm-13.0
 endif

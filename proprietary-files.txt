@@ -178,9 +178,15 @@ cameradata/datapattern_front_420sp.yuv
 
 # DRM
 bin/qseecomd
+<<<<<<< HEAD
 lib/drm/libdrmwvmplugin.so
 lib/libdrmdecrypt.so
 lib/libwvm.so
+=======
+vendor/lib/drm/libdrmwvmplugin.so
+vendor/lib/mediadrm/libwvdrmengine.so
+vendor/lib/libdrmdecrypt.so
+>>>>>>> cms/cm-13.0
 vendor/lib/libdrmdiag.so
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
@@ -236,7 +242,6 @@ vendor/lib/libRSDriver_adreno.so
 vendor/lib/librs_adreno.so
 vendor/lib/librs_adreno_sha1.so
 vendor/lib/libsc-a3xx.so
-vendor/lib/libscale.so
 
 # Graphics firmware
 etc/firmware/a300_pfp.fw

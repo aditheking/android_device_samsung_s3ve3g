@@ -17,6 +17,7 @@
 
 DEVICE_PATH := device/samsung/ms013g
 
+<<<<<<< HEAD
 # Audio
 AUDIO_FEATURE_ENABLED_MULTI_VOICE_SESSIONS := true
 AUDIO_FEATURE_SAMSUNG_DUAL_SIM := true
@@ -28,10 +29,25 @@ TARGET_GLOBAL_CPPFLAGS += -DANDROID_MULTI_SIM
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
+=======
+DEVICE_PATH := device/samsung/s3ve3g
+
+# Audio
+#AUDIO_FEATURE_ENABLED_MULTI_VOICE_SESSIONS := true
+#AUDIO_FEATURE_SAMSUNG_DUAL_SIM := true
+
+# Bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
+
+# Init
+TARGET_INIT_VENDOR_LIB := libinit_s3ve3g
+TARGET_UNIFIED_DEVICE := true
+>>>>>>> cms/cm-13.0
 
 # Kernel
 BOARD_CUSTOM_BOOTIMG_MK := $(DEVICE_PATH)/mkbootimg.mk
 BOARD_KERNEL_BASE := 0x00000000
+<<<<<<< HEAD
 BOARD_KERNEL_CMDLINE := console=null androidboot.console=null androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 androidboot.selinux=permissive
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
@@ -57,3 +73,32 @@ TARGET_PROVIDES_LIBLIGHT := true
 # Recovery
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
 
+=======
+BOARD_KERNEL_CMDLINE := console=null androidboot.console=null androidboot.hardware=qcom user_debug=23 msm_rtb.filter=0x37  androidboot.selinux=permissive androidboot.bootdevice=msm_sdcc.1
+BOARD_KERNEL_PAGESIZE := 2048
+BOARD_KERNEL_SEPARATED_DT := true
+BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x1e00000
+TARGET_KERNEL_SOURCE := kernel/samsung/s3ve3g
+TARGET_KERNEL_CONFIG := cyanogenmod_s3ve3g_defconfig
+
+# Lights
+TARGET_PROVIDES_LIBLIGHT := true
+
+# Partitions
+BOARD_FLASH_BLOCK_SIZE := 131072
+BOARD_BOOTIMAGE_PARTITION_SIZE := 10485760
+BOARD_CACHEIMAGE_PARTITION_SIZE := 721420288
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 11370585
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2097152000
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 12562627584
+TARGET_USERIMAGES_USE_F2FS := true
+
+# Properties
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
+
+# Recovery
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/fstab.qcom
+
+# Releasetools
+TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
+>>>>>>> cms/cm-13.0

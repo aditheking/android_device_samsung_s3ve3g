@@ -45,7 +45,11 @@
     </acdb_ids>
 
     <backend_names>
+<<<<<<< HEAD
 	<!-- empty -->
+=======
+        <!-- empty -->
+>>>>>>> cms/cm-13.0
     </backend_names>
 
     <pcm_ids>
