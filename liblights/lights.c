@@ -28,19 +28,14 @@
 #include <sys/types.h>
 #include <hardware/lights.h>
 
-<<<<<<< HEAD
-=======
 #define UNUSED __attribute__((unused))
 
->>>>>>> cms/cm-13.0
 static pthread_once_t g_init = PTHREAD_ONCE_INIT;
 static pthread_mutex_t g_lock = PTHREAD_MUTEX_INITIALIZER;
 
 char const*const PANEL_FILE = "/sys/class/leds/lcd-backlight/brightness";
 char const*const BUTTON_FILE = "/sys/class/leds/button-backlight/brightness";
 
-<<<<<<< HEAD
-=======
 char const*const LED_BLINK = "/sys/class/sec/led/led_blink";
 
 struct led_config {
@@ -51,7 +46,6 @@ struct led_config {
 static struct led_config g_leds[3]; // For battery, notifications, and attention.
 static int g_cur_led = -1;          // Presently showing LED of the above.
 
->>>>>>> cms/cm-13.0
 void init_g_lock(void)
 {
     pthread_mutex_init(&g_lock, NULL);
@@ -130,8 +124,6 @@ static int rgb_to_brightness(struct light_state_t const *state)
         + (150*((color>>8) & 0x00ff)) + (29*(color & 0x00ff))) >> 8;
 }
 
-<<<<<<< HEAD
-=======
 /* Previously used by set_light_leds.
 static int get_calibrated_color(struct light_state_t const *state, int brightness)
 {
@@ -143,17 +135,12 @@ static int get_calibrated_color(struct light_state_t const *state, int brightnes
 }
 */
 
->>>>>>> cms/cm-13.0
 static int is_lit(struct light_state_t const* state)
 {
     return state->color & 0x00ffffff;
 }
 
-<<<<<<< HEAD
-static int set_light_backlight(struct light_device_t *dev,
-=======
 static int set_light_backlight(UNUSED struct light_device_t *dev,
->>>>>>> cms/cm-13.0
             struct light_state_t const *state)
 {
     int err = 0;
@@ -167,11 +154,7 @@ static int set_light_backlight(UNUSED struct light_device_t *dev,
 }
 
 static int
-<<<<<<< HEAD
-set_light_buttons(struct light_device_t* dev,
-=======
 set_light_buttons(UNUSED struct light_device_t* dev,
->>>>>>> cms/cm-13.0
         struct light_state_t const* state)
 {
     int err = 0;
@@ -194,8 +177,6 @@ static int close_lights(struct light_device_t *dev)
     return 0;
 }
 
-<<<<<<< HEAD
-=======
 /* LEDs */
 static int write_leds(const struct led_config *led)
 {
@@ -331,7 +312,6 @@ static int set_light_leds_attention(UNUSED struct light_device_t *dev,
     return set_light_leds(&fixed, 2);
 }
 
->>>>>>> cms/cm-13.0
 static int open_lights(const struct hw_module_t *module, char const *name,
                         struct hw_device_t **device)
 {
@@ -342,15 +322,12 @@ static int open_lights(const struct hw_module_t *module, char const *name,
         set_light = set_light_backlight;
     else if (0 == strcmp(LIGHT_ID_BUTTONS, name))
         set_light = set_light_buttons;
-<<<<<<< HEAD
-=======
     else if (0 == strcmp(LIGHT_ID_BATTERY, name))
         set_light = set_light_leds_battery;
     else if (0 == strcmp(LIGHT_ID_NOTIFICATIONS, name))
         set_light = set_light_leds_notifications;
     else if (0 == strcmp(LIGHT_ID_ATTENTION, name))
         set_light = set_light_leds_attention;
->>>>>>> cms/cm-13.0
     else
         return -EINVAL;
 
